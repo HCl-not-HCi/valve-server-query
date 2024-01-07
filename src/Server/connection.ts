@@ -123,7 +123,7 @@ export default class Connection extends BaseConnection<ServerData> {
 			if('bzip' in packets[0]!){
 				if(!seekBzip) throw new Error('optional dependency "seek-bzip" needed');
 
-				payload = seekBzip.decode(payload, packets[0].bzip.uncompressedSize);
+				payload = seekBzip.decode(payload, packets[0].bzip!.uncompressedSize);
 				if(log.isEnabled) log.message(this.data, 'bzip2 decompressed');
 			}
 

@@ -3,7 +3,7 @@ import { parseMasterServerOptions, type RawMasterServerOptions } from '../Base/o
 import { BufferReader, BufferWriter } from '../Base/utils';
 import MasterServerConnection from './connection';
 import Filter from './filter';
-import EventEmitter from 'events';
+import { EventEmitter } from 'events';
 
 const ZERO_IP = '0.0.0.0:0';
 

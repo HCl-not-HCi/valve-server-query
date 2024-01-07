@@ -4,7 +4,7 @@ import type { EventEmitter } from 'events';
 
 import * as valve from '../src';
 
-valve.log.enable(__dirname + '/tests.log');
+valve.log.enable('./tests.log');
 const doNothing = (): void => { /* do nothing */ };
 
 // https://www.freegamehosting.eu/stats#garrysmod

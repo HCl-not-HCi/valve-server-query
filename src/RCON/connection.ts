@@ -47,7 +47,7 @@ export default class Connection {
 	public buffers: Buffer[] = [];
 
 	public async send(command: Buffer): Promise<void> {
-		log(this.data, 'RCON sending:', command);
+		log.buffer(this.data, 'RCON sending:', command);
 
 		await new Promise<void>((res, rej) => {
 			this.socket.write(command, 'ascii', err => {
@@ -102,7 +102,7 @@ export default class Connection {
 	}
 
 	private onData(buffer: Buffer): void {
-		log(this.data, 'RCON received:', buffer);
+		log.buffer(this.data, 'RCON received:', buffer);
 
 		if(this.remaining === 0){
 			this.remaining = buffer.readUInt32LE() + 4; // size field
@@ -134,11 +134,11 @@ export default class Connection {
 	public async reconnect(): Promise<void> {
 		// Tiny delay to avoid "Error: Already connected" while reconnecting
 		await delay(1);
-		log(this.data, 'RCON reconnecting...');
+		log.message(this.data, 'RCON reconnecting...');
 
 		this.socket.connect(this.data.port, this.data.ip);
 		await this.awaitConnect();
 
-		log(this.data, 'RCON reconnected');
+		log.message(this.data, 'RCON reconnected');
 	}
 }

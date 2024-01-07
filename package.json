@@ -1,19 +1,22 @@
 {
   "name": "@fabricio-191/valve-server-query",
   "version": "5.0.0",
-  "typings": "./lib/typings/index.d.ts",
   "scripts": {
-    "lint": "npx eslint . --fix",
-    "test": "ts-node scripts/tests.ts --trace-warnings",
+    "lint": "npx eslint ./src/** --fix",
+    "test": "tsx scripts/tests.ts --trace-warnings",
     "test2": "nodemon scripts/test.ts --trace-warnings --ignore *.json",
-    "build": "npm run lint && npm run test && tsc -p tsconfig.build.json && node scripts/tests.js && npm publish"
+    "buildold": "npm run lint && npm run test && tsc -p tsconfig.build.json && node scripts/tests.js",
+    "build:cjs": "tsc -p tsconfig.build.cjs.json && echo {\"type\": \"commonjs\"} > lib/cjs/package.json",
+    "build:esm": "tsc -p tsconfig.build.esm.json && echo {\"type\": \"module\"} > lib/esm/package.json",
+    "build": "npm run build:cjs && npm run build:esm",
+    "publish": "npm publish"
   },
-  "type": "commonjs",
-  "module": "./lib/index.js",
-  "main": "./lib/index.js",
+  "type": "module",
+  "types": "./lib/esm/typings/index.d.ts",
+  "main": "./lib/cjs/index.js",
   "exports": {
-    "import": "./lib/index.js",
-    "require": "./lib/index.js"
+    "import": "./lib/esm/index.js",
+    "require": "./lib/cjs/index.js"
   },
   "homepage": "https://github.com/Fabricio-191/valve-server-query#readme",
   "repository": {
@@ -44,9 +47,15 @@
   ],
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
+    "eslint": "^8.56.0",
+    "eslint-config-standard-with-typescript": "^43.0.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.0",
+    "eslint-plugin-promise": "^6.1.1",
     "ts-node": "^10.9.2",
+    "tsx": "^4.7.0",
     "typescript": "^5.3.3",
     "why-is-node-running": "^2.2.2"
   },

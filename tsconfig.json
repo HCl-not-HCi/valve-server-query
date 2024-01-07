@@ -1,12 +1,11 @@
 {
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"display": "Node 16",
-	"extends": "ts-node/node16/tsconfig.json",
+	// "extends": "ts-node/node16/tsconfig.json",
 	"compilerOptions": {
-		// "esModuleInterop": true,
+		"esModuleInterop": false,
 		// "skipLibCheck": true,
 		"lib": ["ES2015"],
-		"module": "CommonJS",
 		"target": "ES2015",
 		"moduleResolution": "node",
 		"types": ["node"],
@@ -44,17 +43,17 @@
 	},
 	"include": ["src", "test", "scripts"],
 	"exclude": ["lib"],
-	"ts-node": {
-		// It is faster to skip typechecking.
-		// Remove if you want ts-node to do typechecking.
-		"transpileOnly": true,
+	// "ts-node": {
+	// 	// It is faster to skip typechecking.
+	// 	// Remove if you want ts-node to do typechecking.
+	// 	"transpileOnly": true,
 	
-		"files": true,
+	// 	"files": true,
 	
-		"compilerOptions": {
-		  // compilerOptions specified here will override those declared below,
-		  // but *only* in ts-node.  Useful if you want ts-node and tsc to use
-		  // different options with a single tsconfig.json.
-		}
-	},
+	// 	"compilerOptions": {
+	// 	  // compilerOptions specified here will override those declared below,
+	// 	  // but *only* in ts-node.  Useful if you want ts-node and tsc to use
+	// 	  // different options with a single tsconfig.json.
+	// 	}
+	// },
 }

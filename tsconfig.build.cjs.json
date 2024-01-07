@@ -1,0 +1,21 @@
+{
+	// ESM and CJS build based on https://evertpot.com/universal-commonjs-esm-typescript-packages/
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"module": "CommonJS",
+		"noEmit": false,
+	
+		"rootDir": "./src",
+		"outDir":  "./lib/cjs",
+	
+		"declaration": true,
+		"declarationDir": "./lib/cjs/typings",
+		
+		// "sourceMap": false,
+		// "inlineSourceMap": false,
+		// "mapRoot": "",
+
+		// "listEmittedFiles": true
+	},
+	"include": ["src"],
+}
